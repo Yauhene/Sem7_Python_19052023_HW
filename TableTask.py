@@ -24,16 +24,21 @@ def print_operation_table(operation, num_rows=6, num_columns=6):
     list_rows = [x for x in range(1,r_num+1)]
     list_columns =[x for x in range(1, c_num+1)]
     
-    for i in range(0,c_num):
+    #for i in range(0,c_num): # вернуть на место 2
+    for i in range(0,r_num):
         if i==0:
             for x in list_columns:
                 print("{:6d}".format(x), end='')
             #print()
         else: 
-            print("{:6d}".format(list_rows[i]), ' ', end='')
-        
-            for j in range(1,r_num):
-                if type(calk_1(list_columns[j],list_rows[i])) != int:
+            print("{:6d}".format(list_rows[i]), ' ', end='') 
+            
+            #print(f'c_num = {c_num}')
+
+            for j in range(1,c_num):
+            #for j in range(1,r_num): #вернуть на место!
+                #print(f"i = {i}, j = {j}, calk_1(list_columns[j],list_rows[i] = {calk_1(list_columns[j],list_rows[i])}", end='')  
+                if type(calk_1(list_rows[i], list_columns[j])) != int:
                     print("{:5.1f}".format(calk_1(list_columns[j],list_rows[i])), end='')   
                 else:        
                     print("{:6d}".format(calk_1(list_columns[j],list_rows[i])), end='')          
@@ -42,7 +47,7 @@ def print_operation_table(operation, num_rows=6, num_columns=6):
         
 calk_1 = lambda x,y: x*y
 
-print_operation_table(calk_1, 3, 3)
+print_operation_table(calk_1, 6, 6)
 
 print('////////////////////////////////////////////////////////////////////')
 print("Прошу прощения за корявость вывода в консоль.")
