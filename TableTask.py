@@ -15,39 +15,38 @@
 # 4 8 12 16 20 24
 # 5 10 15 20 25 30
 # 6 12 18 24 30 36
-r_num = 6
-c_num = 6
+#r_num = 6
+#c_num = 6
 
 def print_operation_table(operation, num_rows=6, num_columns=6):
+    r_num = num_rows
+    c_num = num_columns
     list_rows = [x for x in range(1,r_num+1)]
     list_columns =[x for x in range(1, c_num+1)]
-    #print(list_rows)
-    for x in list_rows:
-        print("{:4d}".format(x), end='')
-    print()    
-    print("{:4d}".format(list_columns[1]), end='')
-    for i in range(1,r_num):
-        #print(f'i = {i}')
-        #print(list_columns[2], end='')
-        for j in range(1,c_num):
-            #pass
-            #print(f'i = {i}, j = {j}  ', end='')
-
-            #print([j], end ='')
-            #print(f"{calk_1(i, j):.3}")
-            print("{:4d}".format(calk_1(list_columns[j],list_rows[i])), end='')
-            #print(calk_1(list_columns[i],list_rows[j]), end='')
-            #x = calk_1(i, j)
-            # print(f'x = {x}')
-            #print(f'   i = {i}, j = {j}  ')
+    
+    for i in range(0,c_num):
+        if i==0:
+            for x in list_columns:
+                print("{:6d}".format(x), end='')
+            #print()
+        else: 
+            print("{:6d}".format(list_rows[i]), ' ', end='')
+        
+            for j in range(1,r_num):
+                if type(calk_1(list_columns[j],list_rows[i])) != int:
+                    print("{:5.1f}".format(calk_1(list_columns[j],list_rows[i])), end='')   
+                else:        
+                    print("{:6d}".format(calk_1(list_columns[j],list_rows[i])), end='')          
 
         print()
-
-
+        
 calk_1 = lambda x,y: x*y
 
-print_operation_table(calk_1, 6, 6)
-# list_rows = [x for x in range(1,r_num+1)]
-# list_columns =[x for x in range(1, c_num+1)]
-# print(f'len(list_rows) = {len(list_rows)}')
-# print(f'len(list_columns) = {len(list_columns)}')
+print_operation_table(calk_1, 3, 3)
+
+print('////////////////////////////////////////////////////////////////////')
+print("Прошу прощения за корявость вывода в консоль.")
+print("Косяк вызван попыткой хоть как-то сохранить вид таблицы при варианте 'x/y'.")
+print('Возиться не стал просто чтобы не городить уж совсем лишнего.')
+print('////////////////////////////////////////////////////////////////////')
+print()
